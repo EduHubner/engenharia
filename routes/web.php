@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClientesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home/');
 });
+
+Route::get('clientes/buscar', [ClientesController::class, 'buscar']);
+Route::resource('clientes', ClientesController::class);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
