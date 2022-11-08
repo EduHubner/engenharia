@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Clientes;
 use Illuminate\Http\Request;
+use Session;
 
 class ClientesController extends Controller
 {
@@ -16,7 +17,17 @@ class ClientesController extends Controller
     public function index()
     {
         $clientes = Clientes::paginate(5);
-        return view('clientes.index', array('contatos' => $clientes, 'busca' => null));
+        return view('clientes.index', array('clientes' => $clientes, 'busca' => null));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function buscar(Request $request) {
+        $clientes = Clientes::where('nome','LIKE','%'.$request->input('busca').'%')->orwhere('email','LIKE','%'.$request->input('busca').'%')->paginate(5);
+        return view('clientes.index',array('clientes' => $clientes,'busca'=>$request->input('busca')));
     }
 
     /**
@@ -26,7 +37,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        return view('cliente.create');
+        return view('clientes.create');
     }
 
     /**
@@ -78,9 +89,10 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clientes $clientes)
+    public function edit($id)
     {
-        //
+        $cliente = Clientes::find($id);
+        return view('clientes.edit',array('cliente' => $cliente));
     }
 
     /**
@@ -90,9 +102,29 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clientes $clientes)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'nome' => 'required|min:3',
+            'email' => 'required|e-mail',
+            'telefone' => 'required',
+            'cidade' => 'required',
+        ]);
+        $cliente = Clientes::find($id);
+        if($request->hasFile('foto')){
+            $imagem = $request->file('foto');
+            $nomearquivo = md5($cliente->id).".".$imagem->getClientOriginalExtension();
+            $request->file('foto')->move(public_path('.\imagens\clientes'),$nomearquivo);
+        }
+        $cliente->nome = $request->input('nome');
+        $cliente->email = $request->input('email');
+        $cliente->telefone = $request->input('telefone');
+        $cliente->cidade = $request->input('cidade');
+        if($cliente->save()) {
+            Session::flash('mensagem','Cliente alterado com sucesso');
+            return redirect()->back();
+        }
+
     }
 
     /**
@@ -101,8 +133,14 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clientes $clientes)
+    public function destroy(Request $request, $id)
     {
-        //
+        $cliente = Clientes::find($id);
+        if (isset($request->foto)) {
+            unlink($request->foto);
+        }
+        $cliente->delete();
+        Session::flash('mensagem','Cliente Excluído com Sucesso Foto:');
+        return redirect(url('clientes/'));
     }
 }
