@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\ConstrucoesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,9 @@ Route::get('/', function () {
 
 Route::get('clientes/buscar', [ClientesController::class, 'buscar']);
 Route::resource('clientes', ClientesController::class);
+
+Route::get('construcoes/buscar', [ConstrucoesController::class, 'buscar']);
+Route::resource('construcoes', ConstrucoesController::class);
 
 Auth::routes();
 

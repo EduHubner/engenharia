@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('construcoes', function (Blueprint $table) {
             $table->string('finalidade', 100);
-            $table->boolean('aprovacaoCelesc');
+            $table->string('aprovacaoCelesc', 20);
         });
     }
 

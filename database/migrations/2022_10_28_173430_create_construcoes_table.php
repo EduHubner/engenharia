@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();   
             $table->string('situacao', 100);
             $table->string('preco', 50);
-            $table->boolean('pago');
-            $table->boolean('aprovacaoBombeiros');
-            $table->boolean('alvaraDeConstrucao');
+            $table->string('pago', 10);
+            $table->string('aprovacaoBombeiros', 20);
+            $table->string('alvaraDeConstrucao', 20);
             $table->string('areaTerreno', 100);
             $table->dateTime('dataInicio');
             $table->dateTime('dataFim');

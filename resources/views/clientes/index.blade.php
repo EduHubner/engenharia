@@ -3,7 +3,24 @@
 @section('content')
 <div class="container">
     <h1>Lista de Clientes</h1>
-    <a class="btn btn-primary" href="{{url('clientes/create')}}">Cadastrar</a>
+    <div class="row">
+        <div class="col-sm-3">
+            <a class="btn btn-primary" href="{{url('clientes/create')}}">Cadastrar</a>
+        </div>
+        <div class="col-sm-9">
+            <div class="input-group ml-5">
+                @if($busca !== null)
+                    &nbsp;<a class="btn btn-info" href="{{url('clientes/')}}">Todos</a>&nbsp;
+                @endif
+                {{Form::text('busca',$busca,['class'=>'form-control','required','placeholder'=>'buscar'])}}
+                &nbsp;
+                <span class="input-group-btn">
+                    {{Form::submit('Buscar',['class'=>'btn btn-secondary'])}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>    
     <table class="table table-striped">
         <tr>
             <td>ID</td>

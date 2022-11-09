@@ -33,6 +33,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('clientes') }}">Clientes</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('construcoes') }}">Construções</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
