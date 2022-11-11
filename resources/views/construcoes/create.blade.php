@@ -14,11 +14,11 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Data de início</label>
-            {{Form::text('dataInicio',\Carbon\Carbon::now()->format('d/m/Y H:i:s'),['class'=>'form-control','required','placeholder'=>'Data','rows'=>'8'])}}
+            {{Form::date('dataInicio','',['class'=>'form-control'])}}
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Data prevista de finalizaçao</label>
-            {{Form::text('dataFim',\Carbon\Carbon::now()->format('d/m/Y H:i:s'),['class'=>'form-control','required','placeholder'=>'Data','rows'=>'8'])}}
+            {{Form::date('dataFim','',['class'=>'form-control'])}}
         </div>
         <select class="form-select" aria-label="Default select example" name="finalidade" id="finalidade">
             <option selected>Finalidade</option>

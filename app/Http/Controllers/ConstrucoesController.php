@@ -52,13 +52,12 @@ class ConstrucoesController extends Controller
         $construcao->areaTerreno = $request->input('areaTerreno');
         $construcao->preco = $request->input('preco');
         $construcao->finalidade = $request->input('finalidade');
-        $construcao->dataInicio = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $request->input('dataInicio'));
-        $construcao->dataFim = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $request->input('dataFim'));
+        $construcao->dataInicio =  $request->input('dataInicio');
+        $construcao->dataFim = $request->input('dataFim');
         $construcao->aprovacaoBombeiros = "Não aprovado";
         $construcao->aprovacaoCelesc = "Não aprovado";
         $construcao->alvaraDeConstrucao = "Não aprovado";
         $construcao->pago = "Não";
-        $construcao->situacao = "nsei";
         $construcao->detalhes = $request->input('detalhes');
 
         if($construcao->save()) {
@@ -113,13 +112,12 @@ class ConstrucoesController extends Controller
         $construcao->areaTerreno = $request->input('areaTerreno');
         $construcao->preco = $request->input('preco');
         $construcao->finalidade = $request->input('finalidade');
-        $construcao->dataInicio = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $request->input('dataInicio'));
-        $construcao->dataFim = \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $request->input('dataFim'));
-        $construcao->aprovacaoBombeiros = "Não Aprovado";
-        $construcao->aprovacaoCelesc = "Não aprovado";
+        $construcao->dataInicio = $request->input('dataInicio');
+        $construcao->dataFim = $request->input('dataFim');
+        $construcao->aprovacaoBombeiros = $request->input('aprovacaoBombeiros');
+        $construcao->aprovacaoCelesc = $request->input('aprovacaoCelesc');
         $construcao->alvaraDeConstrucao = $request->input('alvaraDeConstrucao');
-        $construcao->pago = "Não";
-        $construcao->situacao = "nsei";
+        $construcao->pago = $request->input('pago');
         $construcao->detalhes = $request->input('detalhes');
 
         if($construcao->save()) {

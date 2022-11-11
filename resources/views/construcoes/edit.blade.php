@@ -19,11 +19,11 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Data de início</label>
-            {{Form::text('dataInicio',$construcao->dataInicio,['class'=>'form-control','required','placeholder'=>'Data','rows'=>'8'])}}
+            {{Form::date('dataInicio',$construcao->dataInicio,['class'=>'form-control'])}}
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Data prevista de finalizaçao</label>
-            {{Form::text('dataFim',$construcao->dataFim,['class'=>'form-control','required','placeholder'=>'Data','rows'=>'8'])}}
+            {{Form::date('dataInicio',$construcao->dataFim,['class'=>'form-control'])}}
         </div>
 
         @switch($construcao->finalidade)
@@ -62,20 +62,20 @@
         @switch($construcao->alvaraDeConstrucao)
             @case(null)
                 @php
-                    $aprov = null;
-                    $naoAprov = 'selected';
+                    $aprovA = null;
+                    $naoAprovA = 'selected';
                 @endphp
                 @break
             @case('Não aprovado')
                 @php
-                    $aprov = null;
-                    $naoAprov = 'selected';
+                    $aprovA = null;
+                    $naoAprovA = 'selected';
                 @endphp
                 @break
             @case('Aprovado')
                 @php
-                    $aprov = 'selected';
-                    $naoAprov = null;
+                    $aprovA = 'selected';
+                    $naoAprovA = null;
                 @endphp
                 @break
             @default
@@ -84,66 +84,66 @@
         <label for="exampleFormControlInput1" class="form-label">Alvará de Construção</label>
         <select class="form-select" aria-label="Default select example" id="alvaraDeConstrucao" name="alvaraDeConstrucao">
             <option>Alvará de Construção</option>
-            <option value="Não aprovado" {{$naoAprov}}>Não aprovado</option>
-            <option value="Aprovado" {{$aprov}}>Aprovado</option>
+            <option value="Não aprovado" {{$naoAprovA}}>Não aprovado</option>
+            <option value="Aprovado" {{$aprovA}}>Aprovado</option>
         </select>
 
         @switch($construcao->aprovacaoBombeiros)
             @case(null)
                 @php
-                    $aprov = null;
-                    $naoAprov = 'selected';
+                    $aprovB = null;
+                    $naoAprovB = 'selected';
                 @endphp
                 @break
             @case('Não aprovado')
                 @php
-                    $aprov = null;
-                    $naoAprov = 'selected';
+                    $aprovB = null;
+                    $naoAprovB = 'selected';
                 @endphp
                 @break
             @case('Aprovado')
                 @php
-                    $aprov = 'selected';
-                    $naoAprov = null;
+                    $aprovB = 'selected';
+                    $naoAprovB = null;
                 @endphp
                 @break
             @default
         @endswitch
 
         <label for="exampleFormControlInput1" class="form-label">Corpo de Bombeiros</label>
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" id="aprovacaoBombeiros" name="aprovacaoBombeiros">
             <option>Corpo de Bombeiros</option>
-            <option value="Não aprovado" {{$naoAprov}}>Não aprovado</option>
-            <option value="Aprovado" {{$aprov}}>Aprovado</option>
+            <option value="Não aprovado" {{$naoAprovB}}>Não aprovado</option>
+            <option value="Aprovado" {{$aprovB}}>Aprovado</option>
         </select>
 
         @switch($construcao->aprovacaoCelesc)
             @case(null)
                 @php
-                    $aprov = null;
-                    $naoAprov = 'selected';
+                    $aprovC = null;
+                    $naoAprovC = 'selected';
                 @endphp
                 @break
             @case('Não aprovado')
                 @php
-                    $aprov = null;
-                    $naoAprov = 'selected';
+                    $aprovC = null;
+                    $naoAprovC = 'selected';
                 @endphp
                 @break
             @case('Aprovado')
                 @php
-                    $aprov = 'selected';
-                    $naoAprov = null;
+                    $aprovC = 'selected';
+                    $naoAprovC = null;
                 @endphp
                 @break
             @default
         @endswitch
 
         <label for="exampleFormControlInput1" class="form-label">Celesc</label>
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" id="aprovacaoCelesc" name="aprovacaoCelesc">
             <option>Celesc</option>
-            <option value="Não aprovado" {{$naoAprov}}>Não aprovado</option>
-            <option value="Aprovado" {{$aprov}}>Aprovado</option>
+            <option value="Não aprovado" {{$naoAprovC}}>Não aprovado</option>
+            <option value="Aprovado" {{$aprovC}}>Aprovado</option>
         </select>
 
         @switch($construcao->pago)
@@ -169,10 +169,10 @@
         @endswitch
 
         <label for="exampleFormControlInput1" class="form-label">Pago</label>
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" id="pago" name="pago">
             <option>Pago</option>
-            <option value="Sim">Sim</option>
-            <option value="Não">Não</option>
+            <option value="Não" {{$nao}}>Não</option>
+            <option value="Sim" {{$sim}}>Sim</option>
         </select>
         
         {{Form::label('cliente_id', 'Cliente')}}

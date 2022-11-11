@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('aprovacaoBombeiros', 20);
             $table->string('alvaraDeConstrucao', 20);
             $table->string('areaTerreno', 100);
-            $table->dateTime('dataInicio');
-            $table->dateTime('dataFim');
+            $table->date('dataInicio');
+            $table->date('dataFim');
             $table->text('detalhes');
             $table->timestamps();
         });

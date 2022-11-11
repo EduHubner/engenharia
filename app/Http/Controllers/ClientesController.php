@@ -140,7 +140,7 @@ class ClientesController extends Controller
             unlink($request->foto);
         }
         $cliente->delete();
-        Session::flash('mensagem','Cliente Excluído com Sucesso Foto:');
+        Session::flash('mensagem','Cliente Excluído com Sucesso');
         return redirect(url('clientes/'));
     }
 }
