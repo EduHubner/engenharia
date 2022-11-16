@@ -5,7 +5,7 @@
     <div style="background-color:white;width:70%;margin:auto;height:1000px;">
         <h1 style="text-align: center">Bem-vindo ao melhor site para Engenheiros</h1>
         <p style="margin-left: 10px">
-            Nesse site você, engenheiro, pode listar seus clientes e suas respectivas construções.
+            Nesse site você, engenheiro(a), pode listar seus clientes e suas respectivas construções.
         </p>
         <p style="margin-left: 10px">
             Você terá como cadastrar a construção para cada cliente cadastrado, poderá alterar as informações tanto do cliente como as das construções.

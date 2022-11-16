@@ -23,7 +23,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Data prevista de finalizaçao</label>
-            {{Form::date('dataInicio',$construcao->dataFim,['class'=>'form-control'])}}
+            {{Form::date('dataFim',$construcao->dataFim,['class'=>'form-control'])}}
         </div>
 
         @switch($construcao->finalidade)
