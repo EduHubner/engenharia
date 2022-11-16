@@ -176,7 +176,7 @@
         </select>
         
         {{Form::label('cliente_id', 'Cliente')}}
-        {{Form::text('cliente_id',$construcao->cliente->nome,['class'=>'form-control','required','placeholder'=>'Selecione um Cliente','list'=>'listaClientes'])}}
+        {{Form::text('cliente_id',$construcao->cliente->id,['class'=>'form-control','required','placeholder'=>'Selecione um Cliente','list'=>'listaClientes'])}}
         <datalist id="listaClientes">
             @foreach($clientes as $cliente)
                 <option value="{{$cliente->id}}">{{$cliente->nome}}</option>
